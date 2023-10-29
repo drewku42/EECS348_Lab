@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>EECS 348 Lab Seven Practice Four</h1>
+    <form id="tableForm">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" name="number" required>
+        <button type="submit">Generate Table</button>
+    </form>
+    <div id="tableContainer"></div>
+    
+    <script>
+        $('#tableForm').on('submit', function(e) {
+            e.preventDefault();
+            var number = $('#number').val();
+            $.post('table.php', {number: number}, function(data) {
+                $('#tableContainer').html(data);
+            });
+        });
+    </script>
+</body>
+</html>
